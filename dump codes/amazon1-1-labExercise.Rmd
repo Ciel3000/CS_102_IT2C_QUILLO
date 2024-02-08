@@ -21,17 +21,17 @@ library(xml2)
 reviewsofLight = data.frame()
 
 
-link01 <- "https://www.amazon.co.uk/s?k=table&page=2&crid=242YB5R424X4O&qid=1707380916&sprefix=tab%2Caps%2C339&ref=sr_pg_2"
+link01 <- "https://www.amazon.co.uk/s?k=table&page=2&qid=1707391475&ref=sr_pg_2"
 
-link02 <- "https://www.amazon.co.uk/s?k=table&page=3&crid=242YB5R424X4O&qid=1707380921&sprefix=tab%2Caps%2C339&ref=sr_pg_3"
+link02 <- "https://www.amazon.co.uk/s?k=table&page=3&qid=1707391520&ref=sr_pg_3"
 
-link03 <- "https://www.amazon.co.uk/s?k=table&page=4&crid=242YB5R424X4O&qid=1707380938&sprefix=tab%2Caps%2C339&ref=sr_pg_4"
+link03 <- "https://www.amazon.co.uk/s?k=table&page=4&qid=1707391538&ref=sr_pg_4"
 
-link04 <- "https://www.amazon.co.uk/s?k=table&page=5&crid=242YB5R424X4O&qid=1707380946&sprefix=tab%2Caps%2C339&ref=sr_pg_5"
+link04 <- "https://www.amazon.co.uk/s?k=table&page=5&qid=1707391545&ref=sr_pg_5"
 
-link05 <- "https://www.amazon.co.uk/s?k=table&page=6&crid=242YB5R424X4O&qid=1707380958&sprefix=tab%2Caps%2C339&ref=sr_pg_6"
+link05 <- "https://www.amazon.co.uk/s?k=table&page=6&qid=1707391558&ref=sr_pg_6"
 
-link06 <- "https://www.amazon.co.uk/s?k=table&page=7&crid=242YB5R424X4O&qid=1707380971&sprefix=tab%2Caps%2C339&ref=sr_pg_7"
+link06 <- "https://www.amazon.co.uk/s?k=table&page=7&qid=1707391569&ref=sr_pg_7"
 
 ```
 
@@ -226,4 +226,3 @@ finalproduct = rbind(products1, products2, products3, products4, products5, prod
 
 
 ```
-

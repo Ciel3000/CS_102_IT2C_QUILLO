@@ -1,0 +1,1674 @@
+---
+title: "part2amazonlabact"
+author: "Quillo"
+date: "2024-02-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+First product(table):
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+library(xml2)
+
+reviewsofLight = data.frame()
+
+
+link01 <- "https://www.amazon.co.uk/s?k=table&ref=nb_sb_noss"
+
+link02 <- "https://www.amazon.co.uk/s?k=table&page=2&qid=1707391475&ref=sr_pg_2"
+
+link03 <- "https://www.amazon.co.uk/s?k=table&page=3&qid=1707391520&ref=sr_pg_3"
+
+link04 <- "https://www.amazon.co.uk/s?k=table&page=4&qid=1707391538&ref=sr_pg_4"
+
+link05 <- "https://www.amazon.co.uk/s?k=table&page=5&qid=1707391545&ref=sr_pg_5"
+
+link06 <- "https://www.amazon.co.uk/s?k=table&page=6&qid=1707391558&ref=sr_pg_6"
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+  
+  products1 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 2
+
+session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products2 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 3
+
+session <- bow(link03,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products3 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 4
+
+session <- bow(link03,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products4 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 5
+
+session <- bow(link05,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products5 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 6
+
+session <- bow(link06,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products6<- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+
+
+finalproduct = rbind(products1, products2, products3, products4, products5, products6)
+
+```
+
+Second product(chair): 
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+library(xml2)
+
+reviewsofLight = data.frame()
+
+
+link01 <- "https://www.amazon.co.uk/s?k=chair&ref=nb_sb_noss"
+
+link02 <- "https://www.amazon.co.uk/s?k=chair&page=2&qid=1707392085&ref=sr_pg_2"
+
+link03 <- "https://www.amazon.co.uk/s?k=chair&page=3&qid=1707392095&ref=sr_pg_3"
+
+link04 <- "https://www.amazon.co.uk/s?k=chair&page=4&qid=1707392109&ref=sr_pg_4"
+
+link05 <- "https://www.amazon.co.uk/s?k=chair&page=5&qid=1707392119&ref=sr_pg_5"
+
+link06 <- "https://www.amazon.co.uk/s?k=chair&page=6&qid=1707392127&ref=sr_pg_6"
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+  
+  products1 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 2
+
+session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products2 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 3
+
+session <- bow(link03,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products3 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 4
+
+session <- bow(link03,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products4 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 5
+
+session <- bow(link05,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products5 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+#link 6
+
+session <- bow(link06,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products6<- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+
+
+finalproduct2 = rbind(products1, products2, products3, products4, products5, products6)
+```
+
+10 product reviews of First product:
+
+```{r}
+
+#product 1 of 10
+
+link01 <- "https://www.amazon.co.uk/Overbed-Castors-Adjustable-Portable-Laminated/product-reviews/B006DA2EE6/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Overbed-Castors-Adjustable-Portable-Laminated/product-reviews/B006DA2EE6/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Overbed-Castors-Adjustable-Portable-Laminated/product-reviews/B006DA2EE6/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product1of10 <- data.frame()
+  
+  product1of10 <- rbind(productreviews1, productreviews2, productreviews3)
+
+  
+  
+#product 2 of 10
+  
+link01 <- "https://www.amazon.co.uk/LIFETIME-92100-Height-adjustable-folding-121-9x61x61-91-4/product-reviews/B003YJPC2A/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/LIFETIME-92100-Height-adjustable-folding-121-9x61x61-91-4/product-reviews/B003YJPC2A/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/LIFETIME-92100-Height-adjustable-folding-121-9x61x61-91-4/product-reviews/B003YJPC2A/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product2of10 <- data.frame()
+  
+  product2of10 <- rbind(productreviews1, productreviews2, productreviews3)
+
+
+#product 3 of 10
+  
+link01 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Americano-Black/product-reviews/B07HG5Q8TP/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Americano-Black/product-reviews/B07HG5Q8TP/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Americano-Black/product-reviews/B07HG5Q8TP/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product3of10 <- data.frame()
+  
+  product3of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+#product 4 of 10
+  
+link01 <- "https://www.amazon.co.uk/Furinno-11192GYW-BK-Efficient-Notebook/product-reviews/B01CP35K1I/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Furinno-11192GYW-BK-Efficient-Notebook/product-reviews/B01CP35K1I/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Furinno-11192GYW-BK-Efficient-Notebook/product-reviews/B01CP35K1I/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product4of10 <- data.frame()
+  
+  product4of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+  
+#product 5 of 10
+  
+link01 <- "https://www.amazon.co.uk/FURINNO-Tables-Wood-French-Black/product-reviews/B01CP3DSAI/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/FURINNO-Tables-Wood-French-Black/product-reviews/B01CP3DSAI/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/FURINNO-Tables-Wood-French-Black/product-reviews/B01CP3DSAI/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product5of10 <- data.frame()
+  
+  product5of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+#product 6 of 10
+  
+link01 <- "https://www.amazon.co.uk/FURINNO-12095GYW-Multipurpose-Computer-Writing/product-reviews/B076XXF21V/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/FURINNO-12095GYW-Multipurpose-Computer-Writing/product-reviews/B076XXF21V/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/FURINNO-12095GYW-Multipurpose-Computer-Writing/product-reviews/B076XXF21V/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product6of10 <- data.frame()
+  
+  product6of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+#product 7 of 10
+  
+link01 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Sonoma-White/product-reviews/B07NPFHWLC/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Sonoma-White/product-reviews/B07NPFHWLC/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Furinno-Table-Wood-Sonoma-White/product-reviews/B07NPFHWLC/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product7of10 <- data.frame()
+  
+  product7of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+  
+#product 8 of 10
+  
+link01 <- "https://www.amazon.co.uk/Furinno-Night-Stand-Drawer-Brown/product-reviews/B00IZCW6KC/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Furinno-Night-Stand-Drawer-Brown/product-reviews/B00IZCW6KC/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Furinno-Night-Stand-Drawer-Brown/product-reviews/B00IZCW6KC/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+  product8of10 <- data.frame()
+  
+  product8of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+#product 9 of 10
+  
+link01 <- "https://www.amazon.co.uk/Adjustable-Portable-Computer-Armchair-Crafting/product-reviews/B074KCZDYK/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/Adjustable-Portable-Computer-Armchair-Crafting/product-reviews/B074KCZDYK/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/Adjustable-Portable-Computer-Armchair-Crafting/product-reviews/B074KCZDYK/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+  product9of10 <- data.frame()
+  
+  product9of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+#product 10 of 10
+  
+link01 <- "https://www.amazon.co.uk/ZINUS-Modern-Studio-Collection-Espresso/product-reviews/B01I5ZLJ3I/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.co.uk/ZINUS-Modern-Studio-Collection-Espresso/product-reviews/B01I5ZLJ3I/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.co.uk/ZINUS-Modern-Studio-Collection-Espresso/product-reviews/B01I5ZLJ3I/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+  product10of10 <- data.frame()
+  
+  product10of10 <- rbind(productreviews1, productreviews2, productreviews3)
+  
+  
+  reviewsof10product <- data.frame()
+  
+  reviewsof10product <- rbind(product1of10, product2of10,product3of10, product4of10, product5of10, product6of10, product7of10, product8of10, product9of10, product10of10)
+  
+```
