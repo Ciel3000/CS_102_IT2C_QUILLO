@@ -18,14 +18,17 @@ library(httr)
 library(selectr)
 library(xml2)
 
-productreviewss1 = data.frame()
+link01 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews"
 
+link02 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_mdrvw?ie=UTF8&reviewerType=all_reviews&mediaType=media_reviews_only&pageNumber=1"
+
+link03 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&mediaType=all_contents&pageNumber=1"
 
 ```
 
 ```{r}
 #link 1
-  session1 <- bow("https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews",
+  session1 <- bow(link01,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
@@ -42,10 +45,10 @@ productreviewss1 = data.frame()
   product_name <- rep(product_name, 10)
   product_name <- product_name[1:10]
   
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
+  product_reviewer <- scrapeNodes("span.a-profile-name")
   product_reviewer <- product_reviewer[1:10]
   
-  product_review <- scrapeNodes("span.cr-original-review-content")
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
   product_review <- product_review[1:10]
   
   product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
@@ -54,8 +57,8 @@ productreviewss1 = data.frame()
   product_rating <- scrapeNodes("span.a-icon-alt")
   product_rating <- product_rating[1:10]
   
-  productreviewss2 = data.frame()
   
+  productreviewss1 = data.frame()
   productsreview1 <- rbind(productreviewss1, data.frame(
                       category = product_category,
                       name = product_name,
@@ -63,14 +66,9 @@ productreviewss1 = data.frame()
                       reviews = product_review,
                       "date of review" = product_date,
                       ratings = product_rating))
-  
-```
 
-
-
-```{r}
 #link 2
-  session2 <- bow("https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1",
+  session2 <- bow(link02,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
@@ -87,10 +85,10 @@ productreviewss1 = data.frame()
   product_name <- rep(product_name, 10)
   product_name <- product_name[1:10]
   
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
+  product_reviewer <- scrapeNodes("span.a-profile-name")
   product_reviewer <- product_reviewer[1:10]
   
-  product_review <- scrapeNodes("span.cr-original-review-content")
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
   product_review <- product_review[1:10]
   
   product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
@@ -99,7 +97,7 @@ productreviewss1 = data.frame()
   product_rating <- scrapeNodes("span.a-icon-alt")
   product_rating <- product_rating[1:10]
   
-  productreviewss3 = data.frame()
+  productreviewss2 = data.frame()
   
   productsreview2 <- rbind(productreviewss2, data.frame(
                       category = product_category,
@@ -109,13 +107,8 @@ productreviewss1 = data.frame()
                       "date of review" = product_date,
                       ratings = product_rating))
   
-```
-
-
-
-```{r}
 #link 3
-  session3 <- bow("https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_fmt?ie=UTF8&reviewerType=avp_only_reviews&pageNumber=1&formatType=current_format",
+  session3 <- bow(link03,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
@@ -132,10 +125,67 @@ productreviewss1 = data.frame()
   product_name <- rep(product_name, 10)
   product_name <- product_name[1:10]
   
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
+  product_reviewer <- scrapeNodes("span.a-profile-name")
   product_reviewer <- product_reviewer[1:10]
   
-  product_review <- scrapeNodes("span.cr-original-review-content")
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviewss3 = data.frame()
+  productsreview3 <- rbind(productreviewss3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+reviewof1stproduct =data.frame()
+reviewof1stproduct1 = rbind(productsreview1,productsreview2,productsreview3)
+
+```
+
+```{r}
+#links for product 2
+
+link01 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews"
+
+link02 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_mdrvw?ie=UTF8&reviewerType=all_reviews&mediaType=media_reviews_only&pageNumber=1"
+
+link03 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&mediaType=all_contents&pageNumber=1"
+
+
+
+
+
+#link 1
+  session1 <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session1) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_category <- "chair"
+  product_category <- rep(product_category, 10)
+  product_category <- product_category[1:10]
+  
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
   product_review <- product_review[1:10]
   
   product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
@@ -145,7 +195,48 @@ productreviewss1 = data.frame()
   product_rating <- product_rating[1:10]
   
   
-  productsreview3 <- rbind(productreviewss3, data.frame(
+  productreviewss1 = data.frame()
+  productsreview1 <- rbind(productreviewss1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+#link 2
+  session2 <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session2) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_category <- "chair"
+  product_category <- rep(product_category, 10)
+  product_category <- product_category[1:10]
+  
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviewss2 = data.frame()
+  
+  productsreview2 <- rbind(productreviewss2, data.frame(
                       category = product_category,
                       name = product_name,
                       reviewer = product_reviewer,
@@ -153,12 +244,52 @@ productreviewss1 = data.frame()
                       "date of review" = product_date,
                       ratings = product_rating))
   
-```
+#link 3
+  session3 <- bow(link03,
+               user_agent = "For Educational Purpose")
 
-```{r}
+  scrapeNodes <- function(selector){
+    scrape(session3) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_category <- "chair"
+  product_category <- rep(product_category, 10)
+  product_category <- product_category[1:10]
+  
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviewss3 = data.frame()
+  productsreview3 <- rbind(productreviewss3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      "date of review" = product_date,
+                      ratings = product_rating))
 
 reviewof1stproduct =data.frame()
 reviewof1stproduct1 = rbind(productsreview1,productsreview2,productsreview3)
 
-```
 
+
+
+
+
+
+```

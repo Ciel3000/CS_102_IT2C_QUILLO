@@ -18,159 +18,211 @@ library(httr)
 library(selectr)
 library(xml2)
 
-productreviewss = data.frame()
+reviewsofLight = data.frame()
 
 
-link01 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+link01 <- "https://www.amazon.co.uk/s?k=table&page=2&crid=242YB5R424X4O&qid=1707380916&sprefix=tab%2Caps%2C339&ref=sr_pg_2"
 
-link02 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+link02 <- "https://www.amazon.co.uk/s?k=table&page=3&crid=242YB5R424X4O&qid=1707380921&sprefix=tab%2Caps%2C339&ref=sr_pg_3"
 
-link03 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+link03 <- "https://www.amazon.co.uk/s?k=table&page=4&crid=242YB5R424X4O&qid=1707380938&sprefix=tab%2Caps%2C339&ref=sr_pg_4"
 
-link04 <- "https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+link04 <- "https://www.amazon.co.uk/s?k=table&page=5&crid=242YB5R424X4O&qid=1707380946&sprefix=tab%2Caps%2C339&ref=sr_pg_5"
 
-link05 <- "https://www.amazon.co.uk/s?k=table&page=5&crid=NG7DYIBSBUUL&qid=1707353911&sprefix=table%2Caps%2C281&ref=sr_pg_5"
+link05 <- "https://www.amazon.co.uk/s?k=table&page=6&crid=242YB5R424X4O&qid=1707380958&sprefix=tab%2Caps%2C339&ref=sr_pg_6"
 
-link06 <- "https://www.amazon.co.uk/s?k=table&page=6&crid=NG7DYIBSBUUL&qid=1707355447&sprefix=table%2Caps%2C281&ref=sr_pg_6"
+link06 <- "https://www.amazon.co.uk/s?k=table&page=7&crid=242YB5R424X4O&qid=1707380971&sprefix=tab%2Caps%2C339&ref=sr_pg_7"
 
 ```
 
 ```{r}
 #link 1
-  session1 <- bow("https://www.amazon.co.uk/Harry-Potter-Junior-Official-License/product-reviews/B092QX6QZ3/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2",
+  session <- bow(link01,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
-    scrape(session1) %>%
+    scrape(session) %>%
       html_nodes(selector) %>%
       html_text(trim = TRUE)
   }
   
-  product_category <- "chair"
-  product_category <- rep(product_category, 10)
-  product_category <- product_category[1:10]
-  
-  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
-  product_name <- rep(product_name, 10)
-  product_name <- product_name[1:10]
-  
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
-  product_reviewer <- product_reviewer[1:10]
-  
-  product_review <- scrapeNodes("span.cr-original-review-content")
-  product_review <- product_review[1:10]
-  
-  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
-  product_date <- product_date[1:10]
-  
-  product_rating <- scrapeNodes("span.a-icon-alt")
-  product_rating <- product_rating[1:10]
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
   
   
-  productsreview1 <- rbind(productreviewss, data.frame(
-                      category = product_category,
+  
+  products1 <- rbind(reviewsofLight, data.frame(
                       name = product_name,
-                      reviewer = product_reviewer,
-                      reviews = product_review,
-                      "date of review" = product_date,
-                      ratings = product_rating))
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
   
 ```
-
-
 
 ```{r}
 #link 2
-  session2 <- bow(link02,
+
+session <- bow(link02,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
-    scrape(session2) %>%
+    scrape(session) %>%
       html_nodes(selector) %>%
       html_text(trim = TRUE)
   }
   
-  product_category <- "chair"
-  product_category <- rep(product_category, 10)
-  product_category <- product_category[1:10]
-  
-  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
-  product_name <- rep(product_name, 10)
-  product_name <- product_name[1:10]
-  
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
-  product_reviewer <- product_reviewer[1:10]
-  
-  product_review <- scrapeNodes("span.cr-original-review-content")
-  product_review <- product_review[1:10]
-  
-  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
-  product_date <- product_date[1:10]
-  
-  product_rating <- scrapeNodes("span.a-icon-alt")
-  product_rating <- product_rating[1:10]
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
   
   
-  productsreview2 <- rbind(productreviewss, data.frame(
-                      category = product_category,
+   
+  products2 <- rbind(reviewsofLight, data.frame(
                       name = product_name,
-                      reviewer = product_reviewer,
-                      reviews = product_review,
-                      "date of review" = product_date,
-                      ratings = product_rating))
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
   
 ```
-
-
 
 ```{r}
 #link 3
-  session3 <- bow(link03,
+
+session <- bow(link03,
                user_agent = "For Educational Purpose")
 
   scrapeNodes <- function(selector){
-    scrape(session3) %>%
+    scrape(session) %>%
       html_nodes(selector) %>%
       html_text(trim = TRUE)
   }
   
-  product_category <- "chair"
-  product_category <- rep(product_category, 10)
-  product_category <- product_category[1:10]
-  
-  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
-  product_name <- rep(product_name, 10)
-  product_name <- product_name[1:10]
-  
-  product_reviewer <- scrapeNodes("span.cr-original-review-content")
-  product_reviewer <- product_reviewer[1:10]
-  
-  product_review <- scrapeNodes("span.cr-original-review-content")
-  product_review <- product_review[1:10]
-  
-  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
-  product_date <- product_date[1:10]
-  
-  product_rating <- scrapeNodes("span.a-icon-alt")
-  product_rating <- product_rating[1:10]
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
   
   
-  productsreview3 <- rbind(productreviewss, data.frame(
-                      category = product_category,
+   
+  products3 <- rbind(reviewsofLight, data.frame(
                       name = product_name,
-                      reviewer = product_reviewer,
-                      reviews = product_review,
-                      "date of review" = product_date,
-                      ratings = product_rating))
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+```
+
+```{r}
+#link 4
+
+session <- bow(link03,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products4 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+```
+
+```{r}
+#link 5
+
+session <- bow(link05,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products5 <- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
+  
+```
+
+```{r}
+#link 6
+
+session <- bow(link06,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  product_name <- scrapeNodes("span.a-size-base-plus.a-color-base.a-text-normal")
+  product_name <- product_name[1:45]
+  product_price <- scrapeNodes("span.a-offscreen")
+  product_price <- product_price[1:45]
+  product_ratings <- scrapeNodes("span.a-icon-alt")
+  product_ratings <- product_ratings[1:45]
+  product_reviews <- scrapeNodes("span.a-size-base.s-underline-text")
+  product_reviews <- product_reviews[1:45]
+  
+  
+   
+  products6<- rbind(reviewsofLight, data.frame(
+                      name = product_name,
+                      price = product_price,
+                      ratings = product_ratings,
+                      reviews = product_reviews))
   
 ```
 
 ```{r}
 
-reviewof1stproduct =data.frame()
-reviewof1stproduct = rbind(productsreview1,productsreview2,productsreview3)
-
-
+finalproduct = rbind(products1, products2, products3, products4, products5, products6)
 
 
 ```
