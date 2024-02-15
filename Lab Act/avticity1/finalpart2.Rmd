@@ -1,0 +1,2295 @@
+---
+title: "part2"
+author: "Quillo"
+date: "2024-02-15"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+library(xml2)
+```
+10 product reviews of First product:
+
+```{r}
+
+#product 1 of 10
+
+link01 <- "https://www.amazon.com.au/Home-Office-Chair-Mesh-Adjustable/product-reviews/B089113R8X/ref=cm_cr_getr_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Home-Office-Chair-Mesh-Adjustable/product-reviews/B089113R8X/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Home-Office-Chair-Mesh-Adjustable/product-reviews/B089113R8X/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Home-Office-Chair-Mesh-Adjustable/product-reviews/B089113R8X/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Home-Office-Chair-Mesh-Adjustable/product-reviews/B089113R8X/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product1of10 <- data.frame()
+  
+  product1of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+
+```
+
+
+```{r}  
+  
+#product 2 of 10
+  
+link01 <- "https://www.amazon.com.au/Big-Tall-Office-Chair-Executive/product-reviews/B0914NC8WN/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Big-Tall-Office-Chair-Executive/product-reviews/B0914NC8WN/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Big-Tall-Office-Chair-Executive/product-reviews/B0914NC8WN/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Big-Tall-Office-Chair-Executive/product-reviews/B0914NC8WN/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Big-Tall-Office-Chair-Executive/product-reviews/B0914NC8WN/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product2of10 <- data.frame()
+  
+  product2of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+
+```
+
+
+```{r}
+#product 3 of 10
+  
+link01 <- "https://www.amazon.com.au/Yamazen-YAMAZEN-EHL-50-WH-BK/product-reviews/B077YFTCMV/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Yamazen-YAMAZEN-EHL-50-WH-BK/product-reviews/B077YFTCMV/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Yamazen-YAMAZEN-EHL-50-WH-BK/product-reviews/B077YFTCMV/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Yamazen-YAMAZEN-EHL-50-WH-BK/product-reviews/B077YFTCMV/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Yamazen-YAMAZEN-EHL-50-WH-BK/product-reviews/B077YFTCMV/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product3of10 <- data.frame()
+  
+  product3of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+  
+```
+
+```{r}
+#product 4 of 10
+  
+link01 <- "https://www.amazon.com.au/Flash-Furniture-Ergonomic-Adjustable-LeatherSoft/product-reviews/B086HH1DN7/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Flash-Furniture-Ergonomic-Adjustable-LeatherSoft/product-reviews/B086HH1DN7/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Flash-Furniture-Ergonomic-Adjustable-LeatherSoft/product-reviews/B086HH1DN7/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+link04 <- "https://www.amazon.com.au/Flash-Furniture-Ergonomic-Adjustable-LeatherSoft/product-reviews/B086HH1DN7/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4<- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Flash-Furniture-Ergonomic-Adjustable-LeatherSoft/product-reviews/B086HH1DN7/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product4of10 <- data.frame()
+  
+  product4of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+```  
+  
+```{r}  
+#product 5 of 10
+  
+link01 <- "https://www.amazon.com.au/Vnewone-Ergonomic-Office-Chair-Adjustable/product-reviews/B08DKRCJG6/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Vnewone-Ergonomic-Office-Chair-Adjustable/product-reviews/B08DKRCJG6/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Vnewone-Ergonomic-Office-Chair-Adjustable/product-reviews/B08DKRCJG6/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Vnewone-Ergonomic-Office-Chair-Adjustable/product-reviews/B08DKRCJG6/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Vnewone-Ergonomic-Office-Chair-Adjustable/product-reviews/B08DKRCJG6/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product5of10 <- data.frame()
+  
+  product5of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+```
+  
+```{r}    
+#product 6 of 10
+  
+link01 <- "https://www.amazon.com.au/Flash-Furniture-Whitney-Mid-Back-Chair/product-reviews/B07FYVWZNG/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Flash-Furniture-Whitney-Mid-Back-Chair/product-reviews/B07FYVWZNG/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Flash-Furniture-Whitney-Mid-Back-Chair/product-reviews/B07FYVWZNG/ref=cm_cr_arp_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+link04 <- "https://www.amazon.com.au/Flash-Furniture-Whitney-Mid-Back-Chair/product-reviews/B07FYVWZNG/ref=cm_cr_getr_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Flash-Furniture-Whitney-Mid-Back-Chair/product-reviews/B07FYVWZNG/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product6of10 <- data.frame()
+  
+  product6of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+
+```  
+
+
+```{r}
+#product 7 of 10
+  
+link01 <- "https://www.amazon.com.au/Flash-Furniture-Fundamentals-Mid-Back-Swivel/product-reviews/B084D22F3R/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Flash-Furniture-Fundamentals-Mid-Back-Swivel/product-reviews/B084D22F3R/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Flash-Furniture-Fundamentals-Mid-Back-Swivel/product-reviews/B084D22F3R/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Flash-Furniture-Fundamentals-Mid-Back-Swivel/product-reviews/B084D22F3R/ref=cm_cr_arp_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4<- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/Flash-Furniture-Fundamentals-Mid-Back-Swivel/product-reviews/B084D22F3R/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  product7of10 <- data.frame()
+  
+  product7of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+  
+```
+
+```{r}
+#product 8 of 10
+  
+link01 <- "https://www.amazon.com.au/Flash-Furniture-Office-LeatherSoft-Wheels/product-reviews/B01MQYP11W/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/Flash-Furniture-Office-LeatherSoft-Wheels/product-reviews/B01MQYP11W/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/Flash-Furniture-Office-LeatherSoft-Wheels/product-reviews/B01MQYP11W/ref=cm_cr_arp_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link04 <- "https://www.amazon.com.au/Flash-Furniture-Office-LeatherSoft-Wheels/product-reviews/B01MQYP11W/ref=cm_cr_getr_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+link05 <- "https://www.amazon.com.au/Flash-Furniture-Office-LeatherSoft-Wheels/product-reviews/B01MQYP11W/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  product8of10 <- data.frame()
+  
+  product8of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+  
+```
+```{r}
+#product 9 of 10
+  
+link01 <- "https://www.amazon.com.au/SANWA-SUPPLY-SNC-A1BK-chair-black/product-reviews/B003Z9L6I8/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/SANWA-SUPPLY-SNC-A1BK-chair-black/product-reviews/B003Z9L6I8/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/SANWA-SUPPLY-SNC-A1BK-chair-black/product-reviews/B003Z9L6I8/ref=cm_cr_arp_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+    link04 <- "https://www.amazon.com.au/SANWA-SUPPLY-SNC-A1BK-chair-black/product-reviews/B003Z9L6I8/ref=cm_cr_getr_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4= data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/SANWA-SUPPLY-SNC-A1BK-chair-black/product-reviews/B003Z9L6I8/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+  product9of10 <- data.frame()
+  
+  product9of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+
+```
+
+```{r}
+#product 10 of 10
+  
+link01 <- "https://www.amazon.com.au/PayLessHere-Ergonomic-Executive-Chair-Adjustable/product-reviews/B07TD7TG53/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+
+
+  session <- bow(link01,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews1= data.frame()
+  productreviews1 <- rbind(productreviews1, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+
+  
+
+link02 <- "https://www.amazon.com.au/PayLessHere-Ergonomic-Executive-Chair-Adjustable/product-reviews/B07TD7TG53/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews2= data.frame()
+  productreviews2 <- rbind(productreviews2, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link03 <- "https://www.amazon.com.au/PayLessHere-Ergonomic-Executive-Chair-Adjustable/product-reviews/B07TD7TG53/ref=cm_cr_getr_d_paging_btm_next_4?ie=UTF8&reviewerType=all_reviews&pageNumber=4"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews3= data.frame()
+  productreviews3 <- rbind(productreviews3, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  link04 <- "https://www.amazon.com.au/PayLessHere-Ergonomic-Executive-Chair-Adjustable/product-reviews/B07TD7TG53/ref=cm_cr_getr_d_paging_btm_next_5?ie=UTF8&reviewerType=all_reviews&pageNumber=5"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+  
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews4 = data.frame()
+  productreviews4 <- rbind(productreviews4, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+link05 <- "https://www.amazon.com.au/PayLessHere-Ergonomic-Executive-Chair-Adjustable/product-reviews/B07TD7TG53/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=all_reviews&pageNumber=6"
+
+
+  session <- bow(link02,
+               user_agent = "For Educational Purpose")
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  product_category <- rep("chair", 10)
+
+  product_name <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  product_name <- rep(product_name, 10)
+  product_name <- product_name[1:10]
+  
+  verified_reviews <-scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")
+  verified_reviews <-verified_reviews[1:10]
+  
+  product_reviewer <- scrapeNodes("span.a-profile-name")
+  product_reviewer <- product_reviewer[1:10]
+  
+  product_review <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+  product_review <- product_review[1:10]
+  
+  product_date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+  product_date <- product_date[1:10]
+  
+  product_rating <- scrapeNodes("span.a-icon-alt")
+  product_rating <- product_rating[1:10]
+  
+  productreviews5= data.frame()
+  productreviews5 <- rbind(productreviews5, data.frame(
+                      category = product_category,
+                      name = product_name,
+                      reviewer = product_reviewer,
+                      reviews = product_review,
+                      veridied = verified_reviews,
+                      "date of review" = product_date,
+                      ratings = product_rating))
+  
+  
+  
+  product10of10 <- data.frame()
+  
+  product10of10 <- rbind(productreviews1, productreviews2, productreviews3,productreviews4, productreviews5)
+
+  
+```
+
+combining of data
+```{r}
+  reviewsof10product <- data.frame()
+  
+  reviewsof10product <- rbind(product1of10, product2of10,product3of10, product4of10, product5of10, product6of10, product7of10, product8of10, product9of10, product10of10)
+  
+```

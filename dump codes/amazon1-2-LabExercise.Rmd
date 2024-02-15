@@ -21,24 +21,24 @@ library(xml2)
 reviewsofLight = data.frame()
 
 
-link01 <- "https://www.amazon.co.uk/s?k=chair&page=2&crid=2VKHBIHHO92IH&qid=1707355675&sprefix=chair%2Caps%2C485&ref=sr_pg_2"
+link01 <- "https://www.amazon.com.au/s?k=table&page=2&qid=1707956110&ref=sr_pg_2"
 
-link02 <- "https://www.amazon.co.uk/s?k=chair&page=3&crid=2VKHBIHHO92IH&qid=1707355678&sprefix=chair%2Caps%2C485&ref=sr_pg_3"
+link02 <- "https://www.amazon.com.au/s?k=table&page=3&qid=1707956125&ref=sr_pg_3"
 
-link03 <- "https://www.amazon.co.uk/s?k=chair&page=4&crid=2VKHBIHHO92IH&qid=1707355692&sprefix=chair%2Caps%2C485&ref=sr_pg_4"
+link03 <- "https://www.amazon.com.au/s?k=table&page=4&qid=1707956155&ref=sr_pg_4"
 
-link04 <- "https://www.amazon.co.uk/s?k=chair&page=5&crid=2VKHBIHHO92IH&qid=1707355701&sprefix=chair%2Caps%2C485&ref=sr_pg_5"
+link04 <- "https://www.amazon.com.au/s?k=table&page=5&qid=1707956166&ref=sr_pg_5"
 
-link05 <- "https://www.amazon.co.uk/s?k=chair&page=6&crid=2VKHBIHHO92IH&qid=1707355732&sprefix=chair%2Caps%2C485&ref=sr_pg_6"
+link05 <- "https://www.amazon.com.au/s?k=table&page=6&qid=1707956172&ref=sr_pg_6"
 
-link06 <- "https://www.amazon.co.uk/s?k=chair&page=7&crid=2VKHBIHHO92IH&qid=1707355776&sprefix=chair%2Caps%2C485&ref=sr_pg_7"
+link06 <- "https://www.amazon.com.au/s?k=table&page=7&qid=1707956186&ref=sr_pg_7"
 
 ```
 
 ```{r}
 #link 1
   session <- bow(link01,
-               user_agent = "For Educational Purpose")
+               user_agent = "Class test")
 
   scrapeNodes <- function(selector){
     scrape(session) %>%
