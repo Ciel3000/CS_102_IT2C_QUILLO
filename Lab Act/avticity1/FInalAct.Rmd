@@ -1,16 +1,17 @@
 ---
-title: "part2amazonlabact"
+title: "Final Part1"
 author: "Quillo"
 date: "2024-02-08"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-First product(table):
-
+libraries
 ```{r}
 
 library(dplyr)
@@ -19,7 +20,11 @@ library(polite)
 library(httr)
 library(selectr)
 library(xml2)
+```
 
+First product(table):
+
+```{r}
 reviewsofLight = data.frame()
 
 
@@ -60,6 +65,8 @@ link06 <- "https://www.amazon.com.au/s?k=table&page=7&qid=1707956186&ref=sr_pg_7
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
+  
+  Sys.sleep(5)
   
 #link 2
 
@@ -117,6 +124,8 @@ session <- bow(link03,
                       ratings = product_ratings,
                       reviews = product_reviews))
   
+   Sys.sleep(5)
+  
 #link 4
 
 session <- bow(link03,
@@ -173,6 +182,7 @@ session <- bow(link05,
                       ratings = product_ratings,
                       reviews = product_reviews))
   
+   Sys.sleep(5)
 #link 6
 
 session <- bow(link06,
@@ -204,7 +214,8 @@ session <- bow(link06,
 
 
 finalproduct = rbind(products1, products2, products3, products4, products5, products6)
-
+finalproduct
+ Sys.sleep(5)
 ```
 
 Second product(chair): 
@@ -257,7 +268,7 @@ link06 <- "https://www.amazon.com.au/s?k=chair&page=7&crid=2P3P0Y4SK8EGW&qid=170
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
-  
+ Sys.sleep(5)
 #link 2
 
 session <- bow(link02,
@@ -285,7 +296,7 @@ session <- bow(link02,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
-  
+ Sys.sleep(5)
 #link 3
 
 session <- bow(link03,
@@ -313,7 +324,7 @@ session <- bow(link03,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
-  
+ Sys.sleep(5)
 #link 4
 
 session <- bow(link03,
@@ -341,7 +352,7 @@ session <- bow(link03,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
-  
+ Sys.sleep(5)
 #link 5
 
 session <- bow(link05,
@@ -369,7 +380,7 @@ session <- bow(link05,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
-  
+ Sys.sleep(5)
 #link 6
 
 session <- bow(link06,
@@ -401,4 +412,16 @@ session <- bow(link06,
 
 
 finalproduct2 = rbind(products1, products2, products3, products4, products5, products6)
+finalproduct2
+
+
+```
+
+combined of 2 products
+
+```{r}
+combined <- data.frame()
+
+combined <- rbind(finalproduct,finalproduct2)
+
 ```
