@@ -1,0 +1,67 @@
+---
+title: "10 movies"
+author: "Quillo, Carl Louie A."
+date: "2024-02-22"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+10 Revies of 1 movie
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+reviews = data.frame()
+
+  link = "https://www.imdb.com/title/tt15398776/reviews?ref_=tt_urv"
+
+  session <- bow(link,
+                 user_agent = "For Educational Purpose")
+
+
+  scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  movie_title <- rep("Oppenheimer",10)
+
+  rating_name <- scrapeNodes("span.display-name-link")
+  rating_name <- rating_name[1:10]
+
+  rating_title <- scrapeNodes("a.title")
+  rating_title <- rating_title[1:10]
+
+  rating_contents <- scrapeNodes("div.content")
+  rating_contents <- rating_contents[1:10]
+
+  rating_date <- scrapeNodes("span.review-date")
+  rating_date <- rating_date[1:10]
+
+  rating_ratings <- scrapeNodes("div.ipl-ratings-bar")
+  rating_ratings <- rating_ratings[1:10]
+
+  rating_date <- scrapeNodes("span.review-date")
+  rating_date <- rating_date[1:10]
+
+
+  reviews <- rbind(reviews, data.frame(movie = movie_title,
+                                       name = rating_name,
+                                       title = rating_title,
+                                       contents = rating_contents,
+                                       date = rating_date,
+                                       ratings = rating_ratings))
+  
+
+```
