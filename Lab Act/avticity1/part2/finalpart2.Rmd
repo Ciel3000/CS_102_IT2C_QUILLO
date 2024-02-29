@@ -11519,7 +11519,6 @@ combining all data
   
   reviewsof10product <- rbind(product1of10, product2of10, product3of10, product4of10, product5of10, product6of10, product7of10, product8of10, product9of10, product10of10, product11of10, product12of10, product13of10, product14of10, product15of10, product16of10, product17of10, product18of10, product19of10, product20of10, product21of10, product22of10, product23of10, product24of10, product25of10, product26of10, product27of10, product28of10, product29of10, product30of10, product31of10, product32of10, product33of10, product34of10, product35of10, product36of10, product37of10, product38of10, product39of10, product40of10, product41of10, product42of10, product43of10, product44of10, product45of10, product46of10, product47of10, product48of10, product49of10, product50of10)
 
+  View(reviewsof10product)
   
-  reviewsof10product10<-reviewsof10product[1:10,]
-  reviewsof10product10
 ```

@@ -66,6 +66,7 @@ link06 <- "https://www.amazon.com.au/s?k=table&page=7&qid=1707956186&ref=sr_pg_7
                       ratings = product_ratings,
                       reviews = product_reviews))
   
+  
   Sys.sleep(5)
   
 #link 2
@@ -123,6 +124,9 @@ session <- bow(link03,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
+    
+  
+  
   
    Sys.sleep(5)
   
@@ -154,6 +158,8 @@ session <- bow(link03,
                       ratings = product_ratings,
                       reviews = product_reviews))
   
+  
+  
 #link 5
 
 session <- bow(link05,
@@ -181,6 +187,7 @@ session <- bow(link05,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
+
   
    Sys.sleep(5)
 #link 6
@@ -212,9 +219,9 @@ session <- bow(link06,
                       reviews = product_reviews))
   
 
-
 finalproduct = rbind(products1, products2, products3, products4, products5, products6)
-finalproduct
+
+
  Sys.sleep(5)
 ```
 
@@ -268,6 +275,9 @@ link06 <- "https://www.amazon.com.au/s?k=chair&page=7&crid=2P3P0Y4SK8EGW&qid=170
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
+
+  
+    
  Sys.sleep(5)
 #link 2
 
@@ -296,6 +306,8 @@ session <- bow(link02,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
+  
+  
  Sys.sleep(5)
 #link 3
 
@@ -324,7 +336,7 @@ session <- bow(link03,
                       price = product_price,
                       ratings = product_ratings,
                       reviews = product_reviews))
- Sys.sleep(5)
+  Sys.sleep(5)
 #link 4
 
 session <- bow(link03,
@@ -409,6 +421,8 @@ session <- bow(link06,
                       ratings = product_ratings,
                       reviews = product_reviews))
   
+  
+  
 
 
 finalproduct2 = rbind(products1, products2, products3, products4, products5, products6)
@@ -423,5 +437,7 @@ combined of 2 products
 combined <- data.frame()
 
 combined <- rbind(finalproduct,finalproduct2)
+
+write.csv(combined, file = "10reviews.csv")
 
 ```
