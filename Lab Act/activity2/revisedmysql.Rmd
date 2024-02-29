@@ -1,0 +1,90 @@
+---
+title: "REVISED code"
+author: "Quillo"
+date: "2024-02-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Creating connections
+
+```{r}
+library(dplyr,dbplyr)
+library(RMariaDB) 
+
+connection <- dbConnect(RMariaDB::MariaDB(), 
+                        dsn="MySQL-connection",
+                        Server = "localhost",
+                        dbname = "reviews", 
+                        user = "root", 
+                        password = "")
+```
+
+
+```{r}
+#install.packages("readr")
+library(readr)
+
+reviews_df <- read.csv('tableandchair.csv')
+tail(reviews_df)
+```
+
+```{r}
+glimpse(reviews_df)
+```
+
+```{r}
+dbWriteTable(con, 'reviews', reviews_df[1:10, ], append = TRUE)
+tail(dbReadTable(con, 'reviews')) #displaying the last 6 rows of the reviews database
+```
+
+```{r}
+dbWriteTable(connection, 'reviews', reviews_df[100:110, ], append = TRUE) # added 10 more observations
+planedf <- dbReadTable(connection, 'reviews')
+planedf[100:110,]
+```
+
+```{r}
+# overwrite the existing observations
+dbWriteTable(connection, 'reviews', reviews_df[1:10, ], overwrite = TRUE) 
+dbReadTable(connection, 'reviews')
+
+# previous observations were deleted and overwritten with the new data.
+```
+
+```{r}
+head(dbReadTable(connection,'reviews'))
+```
+
+```{r}
+dbListTables(connection) #listing the content of the  database
+```
+```{r}
+dbExistsTable(connection, 'reviews2') #checking if the iris2 table is present in the database
+```
+
+\
+
+> Using the `dbRemoveTable()` to remove a table in a database
+
+```{r}
+dbRemoveTable(con,'reviews2') #removes the iris table in the database
+```
+
+\
+
+```{r}
+dbListTables(con) #listing the tables in the database
+```
+
+\
+
+```{r}
+#disconnect from dbase
+dbDisconnect(connection)
+```
+
+
+
