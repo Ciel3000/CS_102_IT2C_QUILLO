@@ -62,6 +62,5 @@ reviews = data.frame()
                                        contents = rating_contents,
                                        date = rating_date,
                                        ratings = rating_ratings))
-  
 
 ```
