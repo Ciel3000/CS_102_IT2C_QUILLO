@@ -91,7 +91,6 @@ print(paste(line1, date, line2))
     ```{r B4b}
     
     (length <- sapply(newexFile3, length))
-    length
     (maxx <- max(length))
     maxx
     (newexFile3 <- lapply(newexFile3, function(row) c(row, rep(NA, maxx - length(row)))))
@@ -104,7 +103,7 @@ print(paste(line1, date, line2))
     
     (unlist1 <- unlist(newexFile3))
     unlist1
-    (mat1 <- matrix(unlist1, nrow = length(data), byrow = TRUE))
+    (mat1 <- matrix(unlist1, nrow = length(hehe), byrow = TRUE))
     mat1
     
     ```
@@ -114,9 +113,10 @@ print(paste(line1, date, line2))
        colnames for the matrix you just created.
     ```{r B4d}
     
-      (namess <- gsub(".*: ", "", newexFile41[2:4]))
-       namess
-      
+      (namess <- gsub(".*: ", "", newexFile4[2:4]))
 
-          
+      
+      (colnames(mat1) <- c(namess))
+      
+      mat1
     ```
