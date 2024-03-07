@@ -84,24 +84,39 @@ print(paste(line1, date, line2))
     ```{r B4a}
       hehe <- exFile
       newexFile3 <- strsplit(hehe,';')
-    
+      newexFile3
     ```
     b. Find the maximum number of fields retrieved by split. Append rows that are
        shorter with NA's.
     ```{r B4b}
     
+    (length <- sapply(newexFile3, length))
+    length
+    (maxx <- max(length))
+    maxx
+    (newexFile3 <- lapply(newexFile3, function(row) c(row, rep(NA, maxx - length(row)))))
+    newexFile3
+        
     
     ```
     c. Use unlist and matrix to transform the data to row-column format.
-    ```{r B4c}
-    unlist1 <- unlist(newexFile3)
-    mat1 <- as.matrix(unlist1)
+    ```{r}
+    
+    (unlist1 <- unlist(newexFile3))
+    unlist1
+    (mat1 <- matrix(unlist1, nrow = length(data), byrow = TRUE))
+    mat1
+    
+    ```
+    
     ```
     d. From comment lines 2-4, extract the names of the fields. Set these as
        colnames for the matrix you just created.
     ```{r B4d}
-  
-    newnames <- colnames(mat1[2:4])
     
-    
+      (namess <- gsub(".*: ", "", newexFile41[2:4]))
+       namess
+      
+
+          
     ```
