@@ -1,0 +1,107 @@
+---
+title: 'Exercise #1'
+author: "Quillo"
+date: "2024-03-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+A.Load the built-in warpbreaks dataset.
+```{r}
+data("warpbreaks")
+```
+
+1. Find out, in a single command, which columns of warpbreaks are either numeric or
+integer. What are the data types of each column?
+```{r A1}
+test <- str(warpbreaks)
+test
+```
+
+2. How many observations does it have?
+```{r A2}
+obs <- objects(warpbreaks)
+obs2 <- nrow(warpbreaks)
+print(paste(obs, obs2))
+```
+
+3. Is numeric a natural data type for the columns which are stored as such? Convert to
+integer when necessary.
+```{r}
+warpbreaks$breaks <- warpbreaks
+warpbreaks$wool <- warpbreaks
+warpbreaks$tension <- warpbreaks
+
+#intwarp1 <- as.integer(intwarp$breaks)
+#intwarp2 <- as.integer(intwarp$wool)
+#intwarp3 <- as.integer(intwarp$tension)
+```
+4. Error messages in R sometimes report the underlying type of an object rather than the user-level class. Derive from the following code and error message what the
+underlying type. Explain what is the error all about. Do not just copy the error
+message that was displayed.
+```{r A4}
+# The error was on the type of object. It said that its a list and cant be converted to integer.
+```
+
+
+
+B. Load the exampleFile.txt
+1. Read the complete file using readLines.
+```{r}
+
+exFile <- readLines("exampleFile.txt")
+
+```
+
+2. Separate the vector of lines into a vector containing comments and a vector
+containing the data. Hint: use grepl.
+```{r B1}
+
+newexFile4 <- exFile[grepl("//",exFile)]
+
+newexFile41 <- exFile[!grepl("//",exFile)]
+newexFile41
+
+```
+
+3. Extract the date from the first comment line and display on the screen “It was created
+data.”
+```{r b3}
+date <- exFile[1]
+
+line1 <-"It was created"
+line2 <- "data."
+print(paste(line1, date, line2))
+```
+
+4. Read the data into a matrix as follows.
+    a. Split the character vectors in the vector containing data lines by semicolon (;)
+       using strsplit.
+    ```{r B4a}
+      hehe <- exFile
+      newexFile3 <- strsplit(hehe,';')
+    
+    ```
+    b. Find the maximum number of fields retrieved by split. Append rows that are
+       shorter with NA's.
+    ```{r B4b}
+    
+    
+    ```
+    c. Use unlist and matrix to transform the data to row-column format.
+    ```{r B4c}
+    unlist1 <- unlist(newexFile3)
+    mat1 <- as.matrix(unlist1)
+    ```
+    d. From comment lines 2-4, extract the names of the fields. Set these as
+       colnames for the matrix you just created.
+    ```{r B4d}
+  
+    newnames <- colnames(mat1[2:4])
+    
+    
+    ```
