@@ -1,0 +1,66 @@
+---
+title: "databaseforarti"
+author: "Quillo"
+date: "2024-03-10"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+INSERT ALL REVIEWS DATA FRAME TO DATABASE
+
+USED RMYSQL
+
+```{r}
+library(DBI)
+library(odbc)
+library(RMySQL)
+library(dplyr,dbplyr)
+```
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "quillo_2c", 
+                        user = "root", 
+                        password = "") 
+
+
+```{r}
+
+library(readr)
+
+artiFiveG <- read.csv("Arxivpaperson5G.csv")
+tail(artiFiveG)
+
+```
+
+Writing Table to Database
+
+```{r}
+
+# dbWriteTable(connection, 'labact4Arti', articles, append = TRUE)
+
+```
+
+LISTING TABLES AND FIELDS
+
+```{r}```
+
+dbListTables(connection)
+dbListFields(connection,'labact4Arti')
+
+
+READING DATA FROM TABLE
+
+```{r}
+
+artidata <- dbGetQuery(connection, "SELECT * FROM quillo_2c.labact4Arti")
+glimpse(artidata)
+
+```
