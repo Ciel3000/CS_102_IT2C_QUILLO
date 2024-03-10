@@ -58,9 +58,8 @@ dbListFields(connection,'labact4Arti')
 
 READING DATA FROM TABLE
 
-```{r}
+```{r}```
 
 artidata <- dbGetQuery(connection, "SELECT * FROM quillo_2c.labact4Arti")
 glimpse(artidata)
 
-```
