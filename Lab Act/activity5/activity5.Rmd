@@ -1,0 +1,89 @@
+---
+title: "reviews"
+author: "Carl"
+date: "2024-03-14"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(dplyr)
+library(stringr)
+
+```
+
+#import
+```{r}
+reviewsorg <- read.csv("twofivereviews.csv")
+
+
+reviews <- reviewsorg
+
+```
+
+
+#reviewer
+```{r}
+
+reviewerdump <- reviews$reviewer
+
+reviews$reviewer <- gsub("\\p{So}", "", reviews$reviewer, perl = TRUE)
+
+```
+
+
+#reviews
+```{r}
+
+reviewscol <- reviews$reviews
+
+#lowering all characters 
+reviews$reviews <- tolower(reviews$reviews)
+
+#removing Emoji
+reviews$reviews <- gsub("\\p{So}", "", reviews$reviews, perl = TRUE)
+
+#removing none english 
+reviews$reviews <- gsub("[^A-Za-z ]", "",  reviews$reviews)
+
+```
+
+
+
+#Date
+```{r}
+
+reviews$date.of.review <- reviews
+
+reviews$date.of.review <- personaldata$date.of.review
+
+reviews$date.of.review <- str_extract(reviews$date.of.review,"\\d+\\s[A-Za-z]+\\s\\d+")
+
+reviews$date.of.review <- as.Date(reviews$date.of.review, format = "%d %b %Y")
+
+
+```
+
+#ratings
+```{r}
+dumpofrat <- reviews$ratings
+
+#filtering the chars
+reviews$ratings <- gsub("\\s*out\\s*of\\s*5\\s*stars", "", reviews$ratings)
+#filter inly the intiger
+reviews$ratings <- gsub("[^0-9.]", "", reviews$ratings)
+#changing it to integer
+reviews$ratings <- as.integer(reviews$ratings)
+```
+
+```{r}
+
+head(reviews)
+
+```
